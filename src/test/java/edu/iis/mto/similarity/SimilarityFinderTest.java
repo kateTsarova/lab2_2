@@ -20,11 +20,11 @@ class SimilarityFinderTest {
             public SearchResult search(int elem, int[] sequence) {
                 for(int i = 0; i<sequence.length; i++){
                     if(sequence[i] == elem){
-                        SearchResult sr = SearchResult.Builder.withFound(true).withPosition(i).build();
+                        SearchResult sr = SearchResult.builder().withFound(true).withPosition(i).build();
                         return sr;
                     }
                 }
-                SearchResult sr = SearchResult.Builder.withFound(false).withPosition(-1).build();
+                SearchResult sr = SearchResult.builder().withFound(false).withPosition(-1).build();
                 return sr;
             }
         };
@@ -44,11 +44,11 @@ class SimilarityFinderTest {
             public SearchResult search(int elem, int[] sequence) {
                 for(int i = 0; i<sequence.length; i++){
                     if(sequence[i] == elem){
-                        SearchResult sr = SearchResult.Builder.withFound(true).withPosition(i).build();
+                        SearchResult sr = SearchResult.builder().withFound(true).withPosition(i).build();
                         return sr;
                     }
                 }
-                SearchResult sr = SearchResult.Builder.withFound(false).withPosition(-1).build();
+                SearchResult sr = SearchResult.builder().withFound(false).withPosition(-1).build();
                 return sr;
             }
         };
@@ -68,11 +68,11 @@ class SimilarityFinderTest {
             public SearchResult search(int elem, int[] sequence) {
                 for(int i = 0; i<sequence.length; i++){
                     if(sequence[i] == elem){
-                        SearchResult sr = SearchResult.Builder.withFound(true).withPosition(i).build();
+                        SearchResult sr = SearchResult.builder().withFound(true).withPosition(i).build();
                         return sr;
                     }
                 }
-                SearchResult sr = SearchResult.Builder.withFound(false).withPosition(-1).build();
+                SearchResult sr = SearchResult.builder().withFound(false).withPosition(-1).build();
                 return sr;
             }
         };
