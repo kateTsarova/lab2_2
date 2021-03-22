@@ -81,4 +81,54 @@ class SimilarityFinderTest {
 
         Assertions.assertTrue(sf.calculateJackardSimilarity(seq1, seq2)==0);
     }
+
+    @Test
+    void similarityFinder_seq1NotEmpty_seq2NotEmpty_equalArrays(){
+        int[] seq1 = {1, 2};
+        int[] seq2 = {1, 2};
+
+        SequenceSearcher seqserch = new SequenceSearcher() {
+            @Override
+            public SearchResult search(int elem, int[] sequence) {
+                for(int i = 0; i<sequence.length; i++){
+                    if(sequence[i] == elem){
+                        SearchResult sr = SearchResult.builder().withFound(true).withPosition(i).build();
+                        return sr;
+                    }
+                }
+                SearchResult sr = SearchResult.builder().withFound(false).withPosition(-1).build();
+                return sr;
+            }
+        };
+
+        SimilarityFinder sf = new SimilarityFinder(seqserch);
+
+        Assertions.assertTrue(sf.calculateJackardSimilarity(seq1, seq2)==1);
+    }
+
+    @Test
+    void similarityFinder_seq1NotEmpty_seq2NotEmpty_notEqualArrays(){
+        int[] seq1 = {1, 2};
+        int[] seq2 = {1, 2, 3, 4};
+
+        SequenceSearcher seqserch = new SequenceSearcher() {
+            @Override
+            public SearchResult search(int elem, int[] sequence) {
+                for(int i = 0; i<sequence.length; i++){
+                    if(sequence[i] == elem){
+                        SearchResult sr = SearchResult.builder().withFound(true).withPosition(i).build();
+                        return sr;
+                    }
+                }
+                SearchResult sr = SearchResult.builder().withFound(false).withPosition(-1).build();
+                return sr;
+            }
+        };
+
+        SimilarityFinder sf = new SimilarityFinder(seqserch);
+
+        System.out.println(sf.calculateJackardSimilarity(seq1, seq2));
+
+        Assertions.assertTrue(sf.calculateJackardSimilarity(seq1, seq2)==0.5);
+    }
 }
